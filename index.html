@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>...</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background-color: pink;
+            font-family: 'Lucida Console', Monaco, monospace;
+        }
+        #text {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        #buttonContainer {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        #normalButton, #movingButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+            font-family: 'Lucida Console', Monaco, monospace;
+        }
+        #normalButton {
+            background-color: #008CBA; /* Blue */
+        }
+        #normalButton:hover {
+            background-color: #007B9E; /* Darker blue */
+        }
+        #movingButton {
+            background-color: #FF5733; /* Red */
+            position: relative; /* Ensure it stays in the flow of the container initially */
+        }
+        #movingButton:hover {
+            background-color: #C70039; /* Darker red */
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            #text {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+            #normalButton, #movingButton {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            #buttonContainer {
+                gap: 10px;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="text">e o cuzinho tá pra jogo, hein?</div>
+    <div id="buttonContainer">
+        <button id="normalButton" onclick="redirectToVideo()">SIM</button>
+        <button id="movingButton">NÃO</button>
+    </div>
+
+    <script>
+        function redirectToVideo() {
+            window.location.href = 'https://www.youtube.com/watch?v=HPdURyombM0'; // URL of the YouTube video
+        }
+
+        const button = document.getElementById('movingButton');
+
+        button.addEventListener('mouseover', () => {
+            const randomX = Math.floor(Math.random() * (window.innerWidth - button.offsetWidth));
+            const randomY = Math.floor(Math.random() * (window.innerHeight - button.offsetHeight));
+            button.style.position = 'absolute';
+            button.style.left = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+        });
+    </script>
+</body>
+</html>
